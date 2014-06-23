@@ -98,7 +98,36 @@ CREATE TABLE IF NOT EXISTS `tb_kategori` (
 
 INSERT INTO `tb_kategori` (`kategori_id`, `nama_kategori`) VALUES
 (1, 'Motor'),
-(2, 'Mobil');
+(2, 'Mobil'),
+(3, 'Sepeda'),
+(4, 'Televisi'),
+(5, 'Mesin Cuci'),
+(6, 'Radio'),
+(7, 'Laptop'),
+(8, 'Komputer'),
+(9, 'Gadget'),
+(10, 'Pakaian'),
+(11, 'Kompor'),
+(12, 'Pisau'),
+(13, 'Kasur'),
+(14, 'Selimut'),
+(15, 'Meja'),
+(16, 'Kursi'),
+(17, 'Almari'),
+(18, 'Tas Ransel'),
+(19, 'Tas Jinjing'),
+(20, 'Sepatu'),
+(21, 'Sendal'),
+(22, 'Topi'),
+(23, 'Kacamata'),
+(24, 'Jam Tangan'),
+(25, 'Orang'),
+(26, 'Cincin'),
+(27, 'Gelang'),
+(28, 'Kalung'),
+(29, 'Anting'),
+(30, 'Uang'),
+(31, 'Dompet';
 
 -- --------------------------------------------------------
 
