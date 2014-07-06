@@ -40,4 +40,5 @@
         android:background="@drawable/counter_bg"
         android:textColor="@color/counter_text_color" />
 
+
 </RelativeLayout>

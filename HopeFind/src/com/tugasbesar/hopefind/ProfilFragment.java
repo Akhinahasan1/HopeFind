@@ -20,5 +20,6 @@ public class ProfilFragment extends Fragment {
 		return rootView;
 	}
 	
+	
 
 }

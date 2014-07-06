@@ -1,0 +1,20 @@
+{ 
+"kategori": 
+	[
+		 {
+		 "idkategori":1,"namakategori":"Mobil"
+		 },
+		 
+		 {
+		 "idkategori":2,"namakategori":"Motor"
+		 },
+		 
+		 {
+		 "idkategori":3,"namakategori":"Becak"
+		 }
+			
+			
+		
+		  
+	] 
+}

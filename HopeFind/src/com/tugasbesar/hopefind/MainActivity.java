@@ -4,6 +4,9 @@ package com.tugasbesar.hopefind;
 
 import java.util.ArrayList;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import com.tugasbesar.hopefind.adapter.NavDrawerListAdapter;
 import com.tugasbesar.hopefind.model.NavDrawerItem;
 
@@ -13,6 +16,7 @@ import android.app.FragmentManager;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -21,6 +25,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.os.Bundle;
+import android.os.Handler;
+import android.app.Activity;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private DrawerLayout mDrawerLayout;
@@ -32,39 +40,61 @@ public class MainActivity extends Activity {
 	private CharSequence mTitle;
 	
 	private String[] navMenuTitle;
+	private boolean status=true;
 	
 	private TypedArray navMenuIcon;
 	
 	private ArrayList<NavDrawerItem> navDrawerItem;
 	private NavDrawerListAdapter adapter;
+    private boolean doubleBackToExitPressedOnce;
 
-	public MainActivity() {
+
+    public MainActivity() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		mTitle = mDrawerTitle = getTitle();
-		
-		navMenuTitle= getResources().getStringArray(R.array.nav_drawer_items);
-		navMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icon);
+
+
+
 		mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
 		
+		if(!status){
+        navMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icon_login);
+        navMenuTitle= getResources().getStringArray(R.array.nav_drawer_items_login);
 		navDrawerItem = new ArrayList<NavDrawerItem>();
 		 //home
 		navDrawerItem.add(new NavDrawerItem (navMenuTitle[0],navMenuIcon.getResourceId(0, -1)));
-		//profil
-		navDrawerItem.add(new NavDrawerItem (navMenuTitle[1],navMenuIcon.getResourceId(1, -1)));
 		//Pesan
-		navDrawerItem.add(new NavDrawerItem (navMenuTitle[2],navMenuIcon.getResourceId(2, -1)));
+		navDrawerItem.add(new NavDrawerItem (navMenuTitle[1],navMenuIcon.getResourceId(1, -1)));
 		//CreateContent
-		navDrawerItem.add(new NavDrawerItem (navMenuTitle[3],navMenuIcon.getResourceId(3, -1), true, "22"));
-		//myPosting
-		navDrawerItem.add(new NavDrawerItem (navMenuTitle[4],navMenuIcon.getResourceId(4, -1),true, "50+"));
+		}else{
+            navMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icon);
+            navMenuTitle= getResources().getStringArray(R.array.nav_drawer_items);
+			navDrawerItem = new ArrayList<NavDrawerItem>();
+			 //home
+			navDrawerItem.add(new NavDrawerItem (navMenuTitle[0],navMenuIcon.getResourceId(0, -1)));
+			//profil
+			navDrawerItem.add(new NavDrawerItem (navMenuTitle[1],navMenuIcon.getResourceId(1, -1)));
+			//Pesan
+			navDrawerItem.add(new NavDrawerItem (navMenuTitle[2],navMenuIcon.getResourceId(2, -1)));
+			//CreateContent
+			navDrawerItem.add(new NavDrawerItem (navMenuTitle[3],navMenuIcon.getResourceId(3, -1), true, "22"));
+			//myPosting
+			navDrawerItem.add(new NavDrawerItem (navMenuTitle[4],navMenuIcon.getResourceId(4, -1),true, "50+"));
+			
+			navDrawerItem.add(new NavDrawerItem (navMenuTitle[5],navMenuIcon.getResourceId(5, -1)));
+		
+		
+		
+		}
 		
 		navMenuIcon.recycle();
 		
@@ -104,7 +134,10 @@ public class MainActivity extends Activity {
 		
 		
 		
+		
 	}
+	
+	
 	/**
 	 * Slide menu item click listener
 	 * */
@@ -121,6 +154,7 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
+		
 		return true;
 	}
 
@@ -156,25 +190,45 @@ public class MainActivity extends Activity {
 	private void displayView(int position) {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
-		switch (position) {
-		case 0:
-			fragment = new HomeFragment();
-			break;
-		case 1:
-			fragment = new ProfilFragment();
-			break;
-		case 2:
-			fragment = new MessageFragment();
-			break;
-		case 3:
-			fragment = new ContentFragment();
-			break;
-		case 4:
-			fragment = new MyPostinFragment();
-			break;
-		default:
-			break;
+		if(!status){
+			switch (position) {
+			case 0:
+				fragment = new HomeFragment();
+				break;
+			case 1:
+				fragment = new LoginFragment();
+				break;
+			default:
+				break;
+			}
+			
+		}else{
+			switch (position) {
+			case 0:
+				fragment = new HomeFragment();
+				break;
+			case 1:
+				fragment = new ProfilFragment();
+				break;
+			case 2:
+				fragment = new MessageFragment();
+				break;
+			case 3:
+				fragment = new ContentFragment();
+				break;
+			case 4:
+				fragment = new MyPostinFragment();
+				break;
+			case 5:
+				fragment = new LoginFragment();
+				break;
+				
+			default:
+				break;
+			}
+			
 		}
+		
 
 		if (fragment != null) {
 			FragmentManager fragmentManager = getFragmentManager();
@@ -215,6 +269,44 @@ public class MainActivity extends Activity {
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
-	}	
+	}
+
+    @Override
+    public void onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
+
+    //cek koneksi
+
+
+    private boolean connectionAvailable() {
+        boolean connected = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            //we are connected to a network
+            connected = true;
+        }
+        return connected;
+    }
+
+
+
 
 }

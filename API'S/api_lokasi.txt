@@ -1,0 +1,20 @@
+{ 
+"lokasi": 
+	[
+		 {
+		 "idlokasi":1,"namalokasi":"Bandung"
+		 },
+		 
+		 {
+		 "idlokasi":2,"namalokasi":"Jakarta"
+		 },
+		 
+		 {
+		 "idlokasi":3,"namalokasi":"Sulawesi"
+		 }
+			
+			
+		
+		  
+	] 
+}
