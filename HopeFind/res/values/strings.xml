@@ -10,6 +10,9 @@
     <string name="action_search">Cari</string>
     <string name="action_refresh">Segarkan</string>
     <string name="action_help">Bantuan</string>
+    <string name="ranklabel">"Rank : "</string>
+    <string name="countrylabel">"Country : "</string>
+    <string name="populationlabel">"Population : "</string>
     
     <string-array name="nav_drawer_items">
         <item>Home</item>

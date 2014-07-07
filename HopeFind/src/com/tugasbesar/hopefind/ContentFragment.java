@@ -25,14 +25,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class ContentFragment extends Fragment {
-    Spinner sp;
-    String[] item={"Kehilangan Barang","Menenukan Barang"};
-
-	public ContentFragment() {
-		// TODO Auto-generated constructor stub
-		
-	}
-
     JSONObject jsonobject,jsonobject2;
     JSONArray jsonarray,jsonarray2;
     ProgressDialog mProgressDialog;
@@ -40,6 +32,11 @@ public class ContentFragment extends Fragment {
     ArrayList<EntitasKategori> kategori;
     ArrayList<String> lokasilist;
     ArrayList<EntitasLokasi> lokasi;
+
+	public ContentFragment() {
+		// TODO Auto-generated constructor stub
+		
+	}
 	
 
 	@Override
@@ -184,10 +181,6 @@ public class ContentFragment extends Fragment {
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		View rootView= inflater.inflate(R.layout.fragment_content,container,false);
-        sp= (Spinner) rootView.findViewById(R.id.idSpinner);
-        ArrayAdapter<String> array_item = new ArrayAdapter<String>(this.getActivity(),android.R.layout.simple_spinner_item,item);
-        array_item.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        sp.setAdapter(array_item);
 		return rootView;
 	}
 
