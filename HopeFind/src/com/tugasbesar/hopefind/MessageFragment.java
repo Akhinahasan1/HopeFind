@@ -8,18 +8,17 @@ import android.view.ViewGroup;
 
 public class MessageFragment extends Fragment {
 
-	public MessageFragment() {
-		// TODO Auto-generated constructor stub
-	}
+    public MessageFragment() {
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		View rootView= inflater.inflate(R.layout .fragment_message,container,false);
-		return rootView;
-	}
-	
-	
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        View rootView = inflater.inflate(R.layout.fragment_message, container, false);
+        return rootView;
+    }
+
 
 }

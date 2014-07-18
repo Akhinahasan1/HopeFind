@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 
 public class MyPostinFragment extends Fragment {
 
-	public MyPostinFragment() {
-		// TODO Auto-generated constructor stub
-	}
+    public MyPostinFragment() {
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		View rootView=inflater.inflate(R.layout.fragment_my_posting,container,false);
-		return rootView;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        View rootView = inflater.inflate(R.layout.fragment_my_posting, container, false);
+        return rootView;
+    }
 
 }

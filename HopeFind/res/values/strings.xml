@@ -13,14 +13,13 @@
     <string name="ranklabel">"Rank : "</string>
     <string name="countrylabel">"Country : "</string>
     <string name="populationlabel">"Population : "</string>
-    
+
     <string-array name="nav_drawer_items">
         <item>Home</item>
         <item>Profil</item>
         <item>Pesan</item>
         <item>Create Content</item>
         <item>My Posting</item>
-        <item>Login</item>
         <item>Logout</item>
     </string-array>
 
@@ -43,6 +42,6 @@
         <item>@drawable/ic_whats_hot</item>
     </array>
     <string name="desc_list_item_icon">Item icon</string>
-    
+
 
 </resources>

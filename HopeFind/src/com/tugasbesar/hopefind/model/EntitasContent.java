@@ -7,21 +7,16 @@ import java.util.Date;
  */
 public class EntitasContent {
     private int idcontent;
-    private int idmember;
     private String title;
     private String type;
-    private String lokasi;
-    private String kategori;
     private String detail;
     private Date dibuat;
 
-    public EntitasContent(){
-        title="";
-        type="";
-        lokasi="";
-        kategori="";
-        detail="";
-        dibuat=null;
+    public EntitasContent() {
+        title = "";
+        type = "";
+        detail = "";
+        dibuat = null;
     }
 
     public Date getDibuat() {
@@ -38,22 +33,6 @@ public class EntitasContent {
 
     public void setDetail(String detail) {
         this.detail = detail;
-    }
-
-    public String getKategori() {
-        return kategori;
-    }
-
-    public void setKategori(String kategori) {
-        this.kategori = kategori;
-    }
-
-    public String getLokasi() {
-        return lokasi;
-    }
-
-    public void setLokasi(String lokasi) {
-        this.lokasi = lokasi;
     }
 
     public String getType() {
@@ -80,11 +59,5 @@ public class EntitasContent {
         this.idcontent = idcontent;
     }
 
-    public int getIdmember() {
-        return idmember;
-    }
 
-    public void setIdmember(int idmember) {
-        this.idmember = idmember;
-    }
 }
